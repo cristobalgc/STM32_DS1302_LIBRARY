@@ -2,7 +2,8 @@
 
 ![DS1302 RTC Module](Images/DS1302_module.jpg)
 
-This repository provides a C library to interface with the DS1302 Real-Time Clock (RTC) module using STM32 microcontrollers. The driver enables easy interaction with the DS1302 chip through SPI in half duplex mode, allowing date and time management.
+> **📦 Description:** A fast and lightweight STM32 HAL driver to communicate with the DS1302 RTC module via SPI (bit-banged). Includes configuration examples, full source code, and documentation for STM32CubeMX and STM32CubeIDE. Perfect for embedded C projects using STM32 microcontrollers.
+This STM32 embedded C driver allows you to interface the DS1302 real-time clock (RTC) module using SPI in half-duplex mode. It provides a lightweight, HAL-compatible solution for managing time, date, and calendar data in STM32-based microcontroller projects.
 
 ## 🚀 Features
 
@@ -12,11 +13,20 @@ This repository provides a C library to interface with the DS1302 Real-Time Cloc
 - Battery backup handling.
 - STM32 HAL compatible.
 - Designed for use with STM32CubeMX and STM32CubeIDE.
-- No need for hardware SPI: uses software-based protocol.
 
 ## 📁 Project Structure
 
-├── Inc/ │ └── ds1302.h ├── Src/ │ └── ds1302.c ├── docs/ │ └── DS1302_module.jpg ├── README.md └── LICENSE
+```
+├── Doc/
+│   └── Datasheet
+│       └── DS1302.pdf
+│   └── latexDocument
+│       └── ds1302_Doc.pdf
+├── ds1302.h
+├── ds1302.c
+├── README.md
+└── LICENSE
+```
 
 ## 🛠️ Requirements
 
@@ -24,15 +34,28 @@ This repository provides a C library to interface with the DS1302 Real-Time Cloc
 - STM32 HAL library configured for GPIO.
 - DS1302 RTC module connected to SPI and GPIO pins (CE, IO, SCLK).
 
+## ⚡ Quick Start
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/cristobalgc/STM32_DS1302_LIBRARY
+   ```
+2. Add the source files to your STM32 project.
+3. Configure the SPI, the GPIOs and timers if used for periodic refresh.
+4. Compile, flash and run.
+
 ## ⚙️ Setup
 
 1. Connect the DS1302 module to your STM32 pins, this example was made by using the STM32F103C8t6 (blue pill).
 
     | DS1302 PIN   | STM32 PIN  | Function    |
     |:------------:|:----------:|:-----------:|
+	| VCC          | 3.3V / 5V  | Power       |
+	| GND          | GND        | Ground      |
     | CE/NRST      | PA4        | GPIO_OUTPUT |
     | SCLK         | PA5        | SPI_CLK     |
     | IO           | PA7        | SPI_MOSI    |
+	| Vbat         | Battery    | Backup Battery |
 
 > ⚠️ **Warning:** Ensure proper voltage levels (typically 5V for DS1302). Use level shifters if your MCU runs at 3.3V to avoid damage.
 
@@ -112,10 +135,23 @@ int main(void)
 ## 📚 References
 This library was inspired by and based on the following resources:
 
-[Real Time Clock Concepts] (https://en.wikipedia.org/wiki/Real-time_clock)
+- [DS1302 Datasheet](https://datasheets.maximintegrated.com/en/ds/DS1302.pdf)
+- [Real Time Clock Concepts](https://en.wikipedia.org/wiki/Real-time_clock)
+- [Bit-banged DS1302 Drivers](https://github.com/luigifcruz/stm32-ds1302)
+- [STM32 GPIO with HAL](https://deepbluembedded.com/stm32-gpio-tutorial-hal-examples/)
 
-## 🔖 Tags
-STM32 DS1302 RTC Time Clock HAL C Microcontroller Embedded STM32CubeMX STM32CubeIDE RealTime STM32Drivers
+## 🔖 Keywords
+
+- STM32
+- DS1302
+- Real-Time Clock (RTC)
+- STM32 HAL Driver
+- Embedded C
+- STM32CubeMX
+- STM32CubeIDE
+- SPI Half-Duplex
+- Microcontroller Libraries
+- STM32 RTC Example
 
 ## 📄 License
 This project is licensed under the GPL V3 License.
